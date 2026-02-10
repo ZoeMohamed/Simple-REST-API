@@ -4,26 +4,26 @@ A comprehensive REST API built with NestJS, TypeScript, PostgreSQL, and JWT Auth
 
 ## 🏗️ Architecture Pattern: Modular Monolith with Repository Pattern
 
-### Mengapa Pattern Ini?
+### Why This Pattern?
 
-Saya menggunakan **Modular Monolith Architecture** dengan **Repository Pattern** karena beberapa alasan:
+I use a **Modular Monolith Architecture** with a **Repository Pattern** for these reasons:
 
 #### 1. **Modular Architecture**
-- **Separation of Concerns**: Setiap modul (Users, Posts, Auth) memiliki tanggung jawab yang jelas dan terisolasi
-- **Scalability**: Mudah untuk menambahkan modul baru atau memindahkan modul ke microservice di masa depan
-- **Maintainability**: Kode lebih mudah dipahami, ditest, dan dimaintain karena setiap modul berdiri sendiri
-- **Team Collaboration**: Tim dapat bekerja pada modul yang berbeda tanpa konflik
+- **Separation of Concerns**: Each module (Users, Posts, Auth) has a clear and isolated responsibility
+- **Scalability**: Easy to add new modules or later extract into microservices
+- **Maintainability**: Code is easier to understand, test, and maintain because each module stands alone
+- **Team Collaboration**: Teams can work on different modules with fewer conflicts
 
 #### 2. **Repository Pattern**
-- **Abstraction**: Memisahkan logika bisnis dari logika akses data
-- **Testability**: Mudah untuk mock repository dalam unit testing
-- **Flexibility**: Mudah mengganti database atau ORM tanpa mengubah business logic
-- **Clean Code**: Kode lebih bersih dan mengikuti SOLID principles
+- **Abstraction**: Separates business logic from data access logic
+- **Testability**: Easy to mock repositories for unit testing
+- **Flexibility**: Easy to swap databases or ORM without changing business logic
+- **Clean Code**: Cleaner code that follows SOLID principles
 
 #### 3. **Dependency Injection**
-- NestJS menyediakan DI container yang powerful
-- Loose coupling antar komponen
-- Mudah untuk testing dengan mock dependencies
+- NestJS provides a powerful DI container
+- Loose coupling between components
+- Easier testing with mocked dependencies
 
 #### 4. **Layered Architecture**
 ```
@@ -77,7 +77,7 @@ flowchart LR
   Common -.-> Controller
 ```
 
-### Struktur Folder
+### Folder Structure
 ```
 src/
 ├── auth/                 # Authentication module (JWT)
