@@ -9,6 +9,11 @@ Panduan lengkap untuk testing REST API dengan berbagai tools.
 2. Pastikan aplikasi berjalan di `http://localhost:3000`
 3. Collection variables akan otomatis tersimpan (token, userId, postId)
 
+### Seeded Credentials (Dev)
+Migration terbaru menambahkan 1 user contoh untuk login cepat:
+- Email: `seed.user@example.com`
+- Password: `Password123!`
+
 ### Test Flow
 1. **Register User** → Simpan userId
 2. **Login** → Simpan JWT token

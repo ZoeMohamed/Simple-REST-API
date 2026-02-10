@@ -6,9 +6,9 @@ services:
     container_name: nestjs_postgres
     restart: always
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: REDACTED
-      POSTGRES_DB: nestjs_api_db
+      POSTGRES_USER: ${DB_USERNAME:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DATABASE:-nestjs_api_db}
     ports:
       - '5433:5432'
     volumes:

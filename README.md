@@ -50,23 +50,28 @@ Authentication flow:
 
 ```mermaid
 flowchart LR
-  Client[Client / Postman]
-  Controller[Controller Layer]
-  Service[Service Layer]
-  Repo[Repository (TypeORM)]
-  DB[(PostgreSQL)]
+  Client["Client (Postman, Browser)"];
+  Controller["Controller Layer"];
+  Pipe["ValidationPipe (DTO)"];
+  Guard["JwtAuthGuard"];
+  Strategy["JwtStrategy"];
+  Service["Service Layer"];
+  Repo["Repository (TypeORM)"];
+  Entity["Entity (User, Post)"];
+  DB[("PostgreSQL")];
 
-  Client --> Controller --> Service --> Repo --> DB
-  DB --> Repo --> Service --> Controller --> Client
+  Client --> Controller --> Pipe --> Guard --> Strategy --> Service --> Repo --> Entity --> DB
+  DB --> Entity --> Repo --> Service --> Controller --> Client
 
   subgraph Modules
-    Auth[Auth Module]
-    Users[Users Module]
-    Posts[Posts Module]
-    Common[Common (decorators/types)]
+    Auth["Auth Module"];
+    Users["Users Module"];
+    Posts["Posts Module"];
+    Common["Common (decorators, types)"];
   end
 
-  Auth -.-> Controller
+  Auth -.-> Guard
+  Auth -.-> Strategy
   Users -.-> Controller
   Posts -.-> Controller
   Common -.-> Controller
@@ -181,7 +186,7 @@ Edit `.env` file with your database credentials:
 DB_HOST=localhost
 DB_PORT=5433
 DB_USERNAME=postgres
-DB_PASSWORD=REDACTED
+DB_PASSWORD=your_password_here
 DB_DATABASE=nestjs_api_db
 
 JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
@@ -518,7 +523,7 @@ Response: 200 OK
 | DB_HOST | PostgreSQL host | localhost |
 | DB_PORT | PostgreSQL port | 5433 |
 | DB_USERNAME | Database username | postgres |
-| DB_PASSWORD | Database password | REDACTED |
+| DB_PASSWORD | Database password | your_password_here |
 | DB_DATABASE | Database name | nestjs_api_db |
 | JWT_SECRET | Secret key for JWT | - |
 | JWT_EXPIRATION | Token expiration time | 1d |
