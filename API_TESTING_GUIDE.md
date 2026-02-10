@@ -14,6 +14,11 @@ Migration terbaru menambahkan 1 user contoh untuk login cepat:
 - Email: `seed.user@example.com`
 - Password: `Password123!`
 
+### Seeded Posts (Dev)
+Migration juga menambahkan beberapa post contoh untuk user seed:
+- `Welcome to the API`
+- `Second Seeded Post`
+
 ### Test Flow
 1. **Register User** → Simpan userId
 2. **Login** → Simpan JWT token

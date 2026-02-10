@@ -32,8 +32,9 @@ describe("Auth & JWT E2E Tests", () => {
   });
 
   describe("Auth Flow", () => {
+    const uniqueSuffix = Date.now();
     const testUser = {
-      email: "test@example.com",
+      email: `test.${uniqueSuffix}@example.com`,
       name: "Test User",
       password: "password123",
     };
