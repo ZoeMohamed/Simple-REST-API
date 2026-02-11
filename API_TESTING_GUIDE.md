@@ -2,7 +2,7 @@
 
 Panduan lengkap untuk testing REST API dengan berbagai tools.
 
-## 🧪 Testing dengan Postman
+## Testing dengan Postman
 
 ### Setup
 1. Import Postman Collection: `postman_collection.json`
@@ -26,7 +26,7 @@ Migration juga menambahkan beberapa post contoh untuk user seed:
 4. **Create Post** → Simpan postId
 5. **Update/Delete Post** → Test authorization
 
-## 🔬 E2E Testing dengan Jest
+## E2E Testing dengan Jest
 
 ### Menjalankan E2E Test
 ```bash
@@ -34,13 +34,13 @@ npm run test:e2e
 ```
 
 ### Test Coverage
-- ✅ User registration
-- ✅ User login dengan JWT
-- ✅ JWT token validation
-- ✅ Protected routes (dengan/tanpa token)
-- ✅ CRUD operations
-- ✅ Authorization (ownership check)
-- ✅ Invalid token handling
+- User registration
+- User login dengan JWT
+- JWT token validation
+- Protected routes (dengan/tanpa token)
+- CRUD operations
+- Authorization (ownership check)
+- Invalid token handling
 
 ### Test Results
 E2E test mencakup:
@@ -49,7 +49,7 @@ E2E test mencakup:
 - JWT protected routes (8 tests)
 - JWT token validation (3 tests)
 
-## 📝 Manual Testing dengan cURL
+## Manual Testing dengan cURL
 
 ### 1. Register User
 ```bash
@@ -113,7 +113,7 @@ curl -X DELETE http://localhost:3000/posts/POST_ID \
   -H "Authorization: Bearer YOUR_TOKEN_HERE"
 ```
 
-## 🔐 JWT Token Testing
+## JWT Token Testing
 
 ### Valid Token Test
 ```bash
@@ -142,7 +142,7 @@ curl -X GET http://localhost:3000/users \
   -H "Authorization: Bearer EXPIRED_TOKEN"
 ```
 
-## 📊 Expected HTTP Status Codes
+## Expected HTTP Status Codes
 
 | Endpoint | Method | Auth | Success | Error |
 |----------|--------|------|---------|-------|
@@ -158,7 +158,7 @@ curl -X GET http://localhost:3000/users \
 | /posts/:id | PATCH | Yes | 200 | 403 (Not owner) |
 | /posts/:id | DELETE | Yes | 200 | 403 (Not owner) |
 
-## 🐛 Common Issues & Solutions
+## Common Issues & Solutions
 
 ### Issue: 401 Unauthorized
 **Solution**: 
@@ -181,7 +181,7 @@ curl -X GET http://localhost:3000/users \
 - Email sudah terdaftar
 - Gunakan email yang berbeda
 
-## 🎯 Test Scenarios
+## Test Scenarios
 
 ### Scenario 1: Full User Journey
 1. Register → Login → Create Post → Update Post → Delete Post
@@ -198,7 +198,7 @@ curl -X GET http://localhost:3000/users \
 2. Register with short password → Should fail (400)
 3. Create post without required fields → Should fail (400)
 
-## 📈 Performance Testing
+## Performance Testing
 
 ### Apache Bench Example
 ```bash
@@ -218,7 +218,7 @@ npm install -g artillery
 artillery quick --count 10 --num 50 http://localhost:3000/posts
 ```
 
-## 📚 Additional Resources
+## Additional Resources
 
 - [Postman Documentation](https://learning.postman.com/docs/getting-started/introduction/)
 - [Jest E2E Testing](https://docs.nestjs.com/fundamentals/testing#end-to-end-testing)

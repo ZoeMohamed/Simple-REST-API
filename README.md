@@ -2,7 +2,7 @@
 
 A comprehensive REST API built with NestJS, TypeScript, PostgreSQL, and JWT Authentication featuring CRUD operations for Users and Posts with a modular architecture.
 
-## 🏗️ Architecture Pattern: Modular Monolith with Repository Pattern
+## Architecture Pattern: Modular Monolith with Repository Pattern
 
 ### Why This Pattern?
 
@@ -33,7 +33,7 @@ I use a **Modular Monolith Architecture** with a **Repository Pattern** for thes
 └── Entity Layer        (Database Models)
 ```
 
-## 🔁 General Flow (Request & Auth)
+## General Flow (Request & Auth)
 
 Request flow:
 ```
@@ -46,7 +46,7 @@ Authentication flow:
 3. `JwtStrategy` validates token and attaches `request.user`.
 4. Controller uses `request.user` for protected actions.
 
-## 🧭 Architecture Diagram
+## Architecture Diagram
 
 ```mermaid
 flowchart LR
@@ -117,19 +117,19 @@ src/
 └── main.ts
 ```
 
-## 📋 Features
+## Features
 
-- ✅ **JWT Authentication** - Secure authentication using JSON Web Tokens
-- ✅ **CRUD Operations** - Complete CRUD for Users and Posts
-- ✅ **PostgreSQL Database** - Relational database with TypeORM
-- ✅ **Data Validation** - Request validation using class-validator
-- ✅ **Password Hashing** - Secure password storage with bcrypt
-- ✅ **E2E Testing** - Comprehensive end-to-end tests
-- ✅ **Error Handling** - Proper HTTP error responses
-- ✅ **TypeScript** - Full type safety
-- ✅ **Relations** - One-to-many relationship between Users and Posts
+- **JWT Authentication** - Secure authentication using JSON Web Tokens
+- **CRUD Operations** - Complete CRUD for Users and Posts
+- **PostgreSQL Database** - Relational database with TypeORM
+- **Data Validation** - Request validation using class-validator
+- **Password Hashing** - Secure password storage with bcrypt
+- **E2E Testing** - Comprehensive end-to-end tests
+- **Error Handling** - Proper HTTP error responses
+- **TypeScript** - Full type safety
+- **Relations** - One-to-many relationship between Users and Posts
 
-## 🗄️ Database Schema
+## Database Schema
 
 ### Users Table
 ```sql
@@ -156,7 +156,7 @@ src/
 - User **hasMany** Posts (One-to-Many)
 - Post **belongsTo** User (Many-to-One)
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Node.js (v18 or higher)
@@ -224,7 +224,7 @@ npm run start:prod
 
 The API will be available at `http://localhost:3000`
 
-## 🗄️ Migrations (TypeORM)
+## Migrations (TypeORM)
 
 Generate a migration based on entity changes:
 ```bash
@@ -241,7 +241,7 @@ Revert last migration:
 npm run migration:revert
 ```
 
-## 🧪 Testing
+## Testing
 
 ### Run E2E Tests
 ```bash
@@ -256,7 +256,7 @@ The E2E tests cover:
 - CRUD operations with JWT authentication
 - Invalid token handling
 
-## 📚 API Documentation
+## API Documentation
 
 ### Base URL
 ```
@@ -477,7 +477,7 @@ Authorization: Bearer {token}
 Response: 200 OK
 ```
 
-## 🔐 Security Features
+## Security Features
 
 1. **Password Hashing**: All passwords are hashed using bcrypt before storage
 2. **JWT Authentication**: Stateless authentication using JSON Web Tokens
@@ -486,7 +486,7 @@ Response: 200 OK
 5. **Input Validation**: All inputs are validated using class-validator
 6. **SQL Injection Protection**: TypeORM provides parameterized queries
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 - **Framework**: NestJS 10
 - **Language**: TypeScript 5
@@ -497,7 +497,7 @@ Response: 200 OK
 - **Testing**: Jest + Supertest
 - **Password Hashing**: bcrypt
 
-## 📦 Project Structure Benefits
+## Project Structure Benefits
 
 1. **Modularity**: Each feature is in its own module
 2. **Reusability**: Common functionality in shared modules
@@ -506,7 +506,7 @@ Response: 200 OK
 5. **Type Safety**: Full TypeScript support with strict typing
 6. **Clean Code**: Following SOLID principles and best practices
 
-## 🔄 Development Workflow
+## Development Workflow
 
 1. **Create Module**: Generate new module using NestJS CLI
 2. **Define Entity**: Create database model with TypeORM
@@ -516,7 +516,7 @@ Response: 200 OK
 6. **Write Tests**: Add unit and E2E tests
 7. **Document API**: Update API documentation
 
-## 📝 Environment Variables
+## Environment Variables
 
 | Variable | Description | Default |
 |----------|-------------|---------|
@@ -530,7 +530,7 @@ Response: 200 OK
 | PORT | Application port | 3000 |
 | NODE_ENV | Environment | development |
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/amazing-feature`)
@@ -538,11 +538,11 @@ Response: 200 OK
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 👨‍💻 Author
+## Author
 
 Zoe
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - NestJS Documentation
 - TypeORM Documentation

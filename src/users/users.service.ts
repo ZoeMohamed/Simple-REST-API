@@ -18,6 +18,7 @@ export class UsersService {
   ) {}
 
   async create(createUserDto: CreateUserDto): Promise<User> {
+    // Enforce unique email and store a bcrypt hash instead of the raw password.
     const existingUser = await this.usersRepository.findOne({
       where: { email: createUserDto.email },
     });
@@ -37,6 +38,7 @@ export class UsersService {
   }
 
   async findAll(): Promise<User[]> {
+    // Return safe user fields and include related posts.
     return await this.usersRepository.find({
       relations: ["posts"],
       select: ["id", "email", "name", "createdAt", "updatedAt"],
@@ -44,6 +46,7 @@ export class UsersService {
   }
 
   async findOne(id: string): Promise<User> {
+    // Fetch by id with related posts; throw if not found.
     const user = await this.usersRepository.findOne({
       where: { id },
       relations: ["posts"],
@@ -71,6 +74,7 @@ export class UsersService {
   }
 
   async update(id: string, updateUserDto: UpdateUserDto): Promise<User> {
+    // Merge updates into the existing user entity.
     const user = await this.findOne(id);
 
     Object.assign(user, updateUserDto);
@@ -79,6 +83,7 @@ export class UsersService {
   }
 
   async remove(id: string): Promise<void> {
+    // Remove the user entity after verifying it exists.
     const user = await this.findOne(id);
     await this.usersRepository.remove(user);
   }

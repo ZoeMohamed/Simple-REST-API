@@ -19,6 +19,7 @@ import { AuthUser } from "../common/types/auth-user.type";
 
 @Controller("posts")
 @UseInterceptors(ClassSerializerInterceptor)
+// Posts endpoints with a mix of public reads and JWT-protected writes.
 export class PostsController {
   constructor(private readonly postsService: PostsService) {}
 

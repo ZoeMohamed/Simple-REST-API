@@ -17,6 +17,7 @@ import { JwtAuthGuard } from "../auth/guards/jwt-auth.guard";
 
 @Controller("users")
 @UseInterceptors(ClassSerializerInterceptor)
+// User CRUD endpoints; all except registration require JWT.
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 

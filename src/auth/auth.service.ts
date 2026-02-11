@@ -28,6 +28,7 @@ export class AuthService {
   ) {}
 
   async validateUser(email: string, password: string): Promise<LoginUser> {
+    // Validate credentials and return a minimal user payload for JWT.
     const user = await this.usersService.findByEmail(email);
 
     if (!user) {
@@ -49,6 +50,7 @@ export class AuthService {
   }
 
   async login(user: LoginUser): Promise<LoginResponse> {
+    // Issue a signed JWT and return the safe user profile.
     // Standard JWT payload: subject = user id
     const payload = { email: user.email, sub: user.id };
 
@@ -63,6 +65,7 @@ export class AuthService {
   }
 
   async validateToken(payload: JwtPayload): Promise<AuthUser> {
+    // Ensure the token subject still maps to a real user.
     // Token is valid only if the user still exists
     const user = await this.usersService.findById(payload.sub);
 

@@ -17,6 +17,7 @@ export class PostsService {
   ) {}
 
   async create(createPostDto: CreatePostDto, userId: string): Promise<Post> {
+    // Create a post that is owned by the authenticated user.
     const post = this.postsRepository.create({
       ...createPostDto,
       userId,
@@ -26,6 +27,7 @@ export class PostsService {
   }
 
   async findAll(): Promise<Post[]> {
+    // Public list of posts including author details.
     return await this.postsRepository.find({
       relations: ["user"],
       order: { createdAt: "DESC" },
@@ -33,6 +35,7 @@ export class PostsService {
   }
 
   async findOne(id: string): Promise<Post> {
+    // Fetch a single post or throw if it does not exist.
     const post = await this.postsRepository.findOne({
       where: { id },
       relations: ["user"],
@@ -46,6 +49,7 @@ export class PostsService {
   }
 
   async findByUserId(userId: string): Promise<Post[]> {
+    // Filter posts by owner for profile views.
     return await this.postsRepository.find({
       where: { userId },
       relations: ["user"],
@@ -58,6 +62,7 @@ export class PostsService {
     updatePostDto: UpdatePostDto,
     userId: string,
   ): Promise<Post> {
+    // Only the post owner can update.
     const post = await this.findOne(id);
 
     if (post.userId !== userId) {
@@ -70,6 +75,7 @@ export class PostsService {
   }
 
   async remove(id: string, userId: string): Promise<void> {
+    // Only the post owner can delete.
     const post = await this.findOne(id);
 
     if (post.userId !== userId) {
