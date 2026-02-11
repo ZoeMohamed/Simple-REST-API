@@ -263,6 +263,11 @@ The E2E tests cover:
 http://localhost:3000
 ```
 
+### Hosted Swagger UI (Render)
+```
+https://simple-rest-api-5nd2.onrender.com/docs
+```
+
 ### Authentication Endpoints
 
 #### Register User
