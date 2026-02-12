@@ -113,8 +113,15 @@ src/
 │   │   └── get-user.decorator.ts
 │   └── types/
 │       └── auth-user.type.ts
+├── database/            # TypeORM data source config
+│   └── data-source.ts
+├── migrations/          # TypeORM migrations + seeds
+│   ├── *-Init.ts
+│   ├── *-SeedUser.ts
+│   └── *-SeedNewsPosts.ts
 ├── app.module.ts        # Root module
-└── main.ts
+├── main.ts
+└── sanity.spec.ts       # Unit test sanity check
 ```
 
 ## Features
@@ -198,9 +205,15 @@ NODE_ENV=development
 
 4. Start PostgreSQL with Docker (recommended)
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
+This starts PostgreSQL (and the API container if you use the included compose file).
 PostgreSQL will be available on `localhost:5433`.
+
+If you want only the database container:
+```bash
+docker compose up -d postgres
+```
 
 Or create PostgreSQL database manually:
 ```bash

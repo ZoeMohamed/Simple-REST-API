@@ -15,9 +15,8 @@ Migration terbaru menambahkan 1 user contoh untuk login cepat:
 - Password: `Password123!`
 
 ### Seeded Posts (Dev)
-Migration juga menambahkan beberapa post contoh untuk user seed:
-- `Welcome to the API`
-- `Second Seeded Post`
+Migration juga menambahkan 10 post contoh (topik berita) untuk user seed.
+Setiap post berisi sumber di bagian content. Gunakan `GET /posts` untuk melihat daftar lengkap.
 
 ### Test Flow
 1. **Register User** → Simpan userId
@@ -44,7 +43,7 @@ npm run test:e2e
 
 ### Test Results
 E2E test mencakup:
-- 14 test cases
+- 15 test cases
 - Auth flow (3 tests)
 - JWT protected routes (8 tests)
 - JWT token validation (3 tests)
