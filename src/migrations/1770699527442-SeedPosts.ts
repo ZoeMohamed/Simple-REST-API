@@ -1,3 +1,5 @@
+// Seed migration for initial posts.
+
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
 export class SeedPosts1770699527442 implements MigrationInterface {

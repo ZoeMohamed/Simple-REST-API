@@ -1,3 +1,5 @@
+// Users service contains business logic for user operations.
+
 import {
   Injectable,
   ConflictException,

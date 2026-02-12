@@ -1,3 +1,5 @@
+// Unit tests for PostsService.
+
 import { Test, TestingModule } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
 import { ForbiddenException, NotFoundException } from "@nestjs/common";

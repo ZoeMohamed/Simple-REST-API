@@ -1,3 +1,5 @@
+// DTO for login payload.
+
 import { ApiProperty } from "@nestjs/swagger";
 import { IsEmail, IsNotEmpty, IsString } from "class-validator";
 

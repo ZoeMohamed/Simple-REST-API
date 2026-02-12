@@ -1,3 +1,5 @@
+// Users module wiring controller, service, and repository.
+
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { UsersService } from "./users.service";

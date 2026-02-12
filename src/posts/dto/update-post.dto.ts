@@ -1,3 +1,5 @@
+// DTO for updating a post.
+
 import { ApiPropertyOptional } from "@nestjs/swagger";
 import { IsBoolean, IsOptional, IsString } from "class-validator";
 

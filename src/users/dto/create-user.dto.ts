@@ -1,3 +1,5 @@
+// DTO for creating a user.
+
 import { ApiProperty } from "@nestjs/swagger";
 import { IsEmail, IsNotEmpty, IsString, MinLength } from "class-validator";
 

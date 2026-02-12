@@ -1,3 +1,5 @@
+// Root module wiring feature modules and infrastructure providers.
+
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { ConfigModule, ConfigService } from "@nestjs/config";

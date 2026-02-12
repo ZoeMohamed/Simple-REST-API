@@ -1,3 +1,5 @@
+// TypeORM data source used by CLI commands and migrations.
+
 import "dotenv/config";
 import { DataSource } from "typeorm";
 import { User } from "../users/entities/user.entity";

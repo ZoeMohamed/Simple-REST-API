@@ -1,3 +1,5 @@
+// Application bootstrap: configure global middleware, Swagger, and start the HTTP server.
+
 import { NestFactory } from "@nestjs/core";
 import { ValidationPipe } from "@nestjs/common";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";

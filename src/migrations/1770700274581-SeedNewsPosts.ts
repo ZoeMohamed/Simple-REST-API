@@ -1,3 +1,5 @@
+// Seed migration for news-based posts.
+
 import { MigrationInterface, QueryRunner } from "typeorm";
 
 export class SeedNewsPosts1770700274581 implements MigrationInterface {

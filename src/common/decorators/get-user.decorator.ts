@@ -1,3 +1,5 @@
+// Custom decorator to access the authenticated user from the request.
+
 import { createParamDecorator, ExecutionContext } from "@nestjs/common";
 import { AuthUser } from "../types/auth-user.type";
 

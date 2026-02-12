@@ -1,3 +1,5 @@
+// User entity mapped to the users table.
+
 import {
   Entity,
   PrimaryGeneratedColumn,

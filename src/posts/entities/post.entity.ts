@@ -1,3 +1,5 @@
+// Post entity mapped to the posts table.
+
 import {
   Entity,
   PrimaryGeneratedColumn,

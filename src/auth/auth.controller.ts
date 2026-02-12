@@ -1,3 +1,5 @@
+// Authentication endpoints (login).
+
 import { Controller, Post, Body, HttpCode, HttpStatus } from "@nestjs/common";
 import { ApiBody, ApiTags } from "@nestjs/swagger";
 import { AuthService } from "./auth.service";

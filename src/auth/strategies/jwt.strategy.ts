@@ -1,3 +1,5 @@
+// JWT strategy validates bearer tokens and loads user context.
+
 import { Injectable } from "@nestjs/common";
 import { PassportStrategy } from "@nestjs/passport";
 import { ExtractJwt, Strategy } from "passport-jwt";

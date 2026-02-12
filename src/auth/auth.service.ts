@@ -1,3 +1,5 @@
+// Auth service validates credentials and issues JWT tokens.
+
 import { Injectable, UnauthorizedException } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
 import { UsersService } from "../users/users.service";

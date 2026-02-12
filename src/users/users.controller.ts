@@ -1,3 +1,5 @@
+// Users API routes.
+
 import {
   Controller,
   Get,

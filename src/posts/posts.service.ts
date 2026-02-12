@@ -1,3 +1,5 @@
+// Posts service contains business logic for post operations.
+
 import {
   Injectable,
   NotFoundException,

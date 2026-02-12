@@ -1,3 +1,5 @@
+// Seed migration for a default user.
+
 import { MigrationInterface, QueryRunner } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 

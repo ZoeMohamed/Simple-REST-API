@@ -1,3 +1,5 @@
+// Posts module wiring controller, service, and repository.
+
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { PostsService } from "./posts.service";

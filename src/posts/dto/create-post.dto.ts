@@ -1,3 +1,5 @@
+// DTO for creating a post.
+
 import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
 import { IsBoolean, IsNotEmpty, IsOptional, IsString } from "class-validator";
 

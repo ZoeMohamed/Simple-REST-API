@@ -1,3 +1,5 @@
+// Posts API routes.
+
 import {
   Controller,
   Get,

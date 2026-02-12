@@ -1,3 +1,5 @@
+// Unit tests for AuthService.
+
 import { UnauthorizedException } from "@nestjs/common";
 import * as bcrypt from "bcrypt";
 import { AuthService } from "./auth.service";

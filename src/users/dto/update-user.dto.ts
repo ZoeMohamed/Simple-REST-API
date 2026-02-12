@@ -1,3 +1,5 @@
+// DTO for updating a user.
+
 import { ApiPropertyOptional } from "@nestjs/swagger";
 import { IsOptional, IsString } from "class-validator";
 

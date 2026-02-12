@@ -1,3 +1,5 @@
+// Initial database schema migration.
+
 import { MigrationInterface, QueryRunner } from "typeorm";
 
 export class Init1770693416510 implements MigrationInterface {
