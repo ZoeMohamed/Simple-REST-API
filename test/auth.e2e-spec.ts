@@ -8,6 +8,8 @@ describe("Auth & JWT E2E Tests", () => {
   let jwtToken: string;
   let userId: string;
   let postId: string;
+  const apiPrefix = "api";
+  const apiPath = `/${apiPrefix}`;
 
   beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
@@ -15,6 +17,7 @@ describe("Auth & JWT E2E Tests", () => {
     }).compile();
 
     app = moduleFixture.createNestApplication();
+    app.setGlobalPrefix(apiPrefix);
 
     app.useGlobalPipes(
       new ValidationPipe({
@@ -41,7 +44,7 @@ describe("Auth & JWT E2E Tests", () => {
 
     it("POST /users - should create a new user", () => {
       return request(app.getHttpServer())
-        .post("/users")
+        .post(`${apiPath}/users`)
         .send(testUser)
         .expect(201)
         .expect((res) => {
@@ -55,7 +58,7 @@ describe("Auth & JWT E2E Tests", () => {
 
     it("POST /auth/login - should login and return JWT token", () => {
       return request(app.getHttpServer())
-        .post("/auth/login")
+        .post(`${apiPath}/auth/login`)
         .send({
           email: testUser.email,
           password: testUser.password,
@@ -71,7 +74,7 @@ describe("Auth & JWT E2E Tests", () => {
 
     it("POST /auth/login - should fail with invalid credentials", () => {
       return request(app.getHttpServer())
-        .post("/auth/login")
+        .post(`${apiPath}/auth/login`)
         .send({
           email: testUser.email,
           password: "wrongpassword",
@@ -82,12 +85,12 @@ describe("Auth & JWT E2E Tests", () => {
 
   describe("JWT Protected Routes", () => {
     it("GET /users - should fail without JWT token", () => {
-      return request(app.getHttpServer()).get("/users").expect(401);
+      return request(app.getHttpServer()).get(`${apiPath}/users`).expect(401);
     });
 
     it("GET /users - should succeed with valid JWT token", () => {
       return request(app.getHttpServer())
-        .get("/users")
+        .get(`${apiPath}/users`)
         .set("Authorization", `Bearer ${jwtToken}`)
         .expect(200)
         .expect((res) => {
@@ -98,7 +101,7 @@ describe("Auth & JWT E2E Tests", () => {
 
     it("GET /users/:id - should get user by id with JWT token", () => {
       return request(app.getHttpServer())
-        .get(`/users/${userId}`)
+        .get(`${apiPath}/users/${userId}`)
         .set("Authorization", `Bearer ${jwtToken}`)
         .expect(200)
         .expect((res) => {
@@ -110,7 +113,7 @@ describe("Auth & JWT E2E Tests", () => {
 
     it("POST /posts - should fail without JWT token", () => {
       return request(app.getHttpServer())
-        .post("/posts")
+        .post(`${apiPath}/posts`)
         .send({
           title: "Test Post",
           content: "This is a test post",
@@ -120,7 +123,7 @@ describe("Auth & JWT E2E Tests", () => {
 
     it("POST /posts - should create post with valid JWT token", () => {
       return request(app.getHttpServer())
-        .post("/posts")
+        .post(`${apiPath}/posts`)
         .set("Authorization", `Bearer ${jwtToken}`)
         .send({
           title: "Test Post",
@@ -138,7 +141,7 @@ describe("Auth & JWT E2E Tests", () => {
 
     it("GET /posts - should get all posts without authentication", () => {
       return request(app.getHttpServer())
-        .get("/posts")
+        .get(`${apiPath}/posts`)
         .expect(200)
         .expect((res) => {
           expect(Array.isArray(res.body)).toBe(true);
@@ -151,7 +154,7 @@ describe("Auth & JWT E2E Tests", () => {
 
     it("PATCH /posts/:id - should update post with valid JWT token", () => {
       return request(app.getHttpServer())
-        .patch(`/posts/${postId}`)
+        .patch(`${apiPath}/posts/${postId}`)
         .set("Authorization", `Bearer ${jwtToken}`)
         .send({
           title: "Updated Test Post",
@@ -164,27 +167,29 @@ describe("Auth & JWT E2E Tests", () => {
 
     it("DELETE /posts/:id - should delete post with valid JWT token", () => {
       return request(app.getHttpServer())
-        .delete(`/posts/${postId}`)
+        .delete(`${apiPath}/posts/${postId}`)
         .set("Authorization", `Bearer ${jwtToken}`)
         .expect(200);
     });
 
     it("GET /posts/:id - should return 404 for deleted post", () => {
-      return request(app.getHttpServer()).get(`/posts/${postId}`).expect(404);
+      return request(app.getHttpServer())
+        .get(`${apiPath}/posts/${postId}`)
+        .expect(404);
     });
   });
 
   describe("JWT Token Validation", () => {
     it("Should reject invalid JWT token", () => {
       return request(app.getHttpServer())
-        .get("/users")
+        .get(`${apiPath}/users`)
         .set("Authorization", "Bearer invalid_token_here")
         .expect(401);
     });
 
     it("Should reject expired or malformed JWT token", () => {
       return request(app.getHttpServer())
-        .get("/users")
+        .get(`${apiPath}/users`)
         .set(
           "Authorization",
           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.invalid",
@@ -194,7 +199,7 @@ describe("Auth & JWT E2E Tests", () => {
 
     it("Should reject request without Bearer prefix", () => {
       return request(app.getHttpServer())
-        .get("/users")
+        .get(`${apiPath}/users`)
         .set("Authorization", jwtToken)
         .expect(401);
     });

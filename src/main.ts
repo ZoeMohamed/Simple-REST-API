@@ -9,6 +9,10 @@ async function bootstrap() {
   // Enable CORS
   app.enableCors();
 
+  // Global API prefix
+  const globalPrefix = "api";
+  app.setGlobalPrefix(globalPrefix);
+
   // Global validation to enforce DTO rules on every request
   app.useGlobalPipes(
     new ValidationPipe({
@@ -25,14 +29,19 @@ async function bootstrap() {
       .setDescription("API documentation for Users, Auth, and Posts")
       .setVersion("1.0.0")
       .addBearerAuth()
+      .addServer(`/${globalPrefix}`)
       .build();
-    const document = SwaggerModule.createDocument(app, config);
-    SwaggerModule.setup("docs", app, document);
+    const document = SwaggerModule.createDocument(app, config, {
+      ignoreGlobalPrefix: false,
+    });
+    SwaggerModule.setup(`${globalPrefix}/docs`, app, document);
   }
 
   const port = process.env.PORT || 3000;
   await app.listen(port);
 
-  console.log(`Application is running on: http://localhost:${port}`);
+  console.log(
+    `Application is running on: http://localhost:${port}/${globalPrefix}`,
+  );
 }
 bootstrap();

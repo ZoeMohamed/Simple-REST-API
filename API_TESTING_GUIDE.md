@@ -6,7 +6,7 @@ Panduan lengkap untuk testing REST API dengan berbagai tools.
 
 ### Setup
 1. Import Postman Collection: `postman_collection.json`
-2. Pastikan aplikasi berjalan di `http://localhost:3000`
+2. Pastikan aplikasi berjalan di `http://localhost:3000/api`
 3. Collection variables akan otomatis tersimpan (token, userId, postId)
 
 ### Seeded Credentials (Dev)
@@ -53,7 +53,7 @@ E2E test mencakup:
 
 ### 1. Register User
 ```bash
-curl -X POST http://localhost:3000/users \
+curl -X POST http://localhost:3000/api/users \
   -H "Content-Type: application/json" \
   -d '{
     "email": "test@example.com",
@@ -64,7 +64,7 @@ curl -X POST http://localhost:3000/users \
 
 ### 2. Login
 ```bash
-curl -X POST http://localhost:3000/auth/login \
+curl -X POST http://localhost:3000/api/auth/login \
   -H "Content-Type: application/json" \
   -d '{
     "email": "test@example.com",
@@ -76,13 +76,13 @@ Simpan `access_token` dari response untuk request berikutnya.
 
 ### 3. Get All Users (Protected)
 ```bash
-curl -X GET http://localhost:3000/users \
+curl -X GET http://localhost:3000/api/users \
   -H "Authorization: Bearer YOUR_TOKEN_HERE"
 ```
 
 ### 4. Create Post (Protected)
 ```bash
-curl -X POST http://localhost:3000/posts \
+curl -X POST http://localhost:3000/api/posts \
   -H "Authorization: Bearer YOUR_TOKEN_HERE" \
   -H "Content-Type: application/json" \
   -d '{
@@ -94,12 +94,12 @@ curl -X POST http://localhost:3000/posts \
 
 ### 5. Get All Posts (Public)
 ```bash
-curl -X GET http://localhost:3000/posts
+curl -X GET http://localhost:3000/api/posts
 ```
 
 ### 6. Update Post (Protected, Owner Only)
 ```bash
-curl -X PATCH http://localhost:3000/posts/POST_ID \
+curl -X PATCH http://localhost:3000/api/posts/POST_ID \
   -H "Authorization: Bearer YOUR_TOKEN_HERE" \
   -H "Content-Type: application/json" \
   -d '{
@@ -109,7 +109,7 @@ curl -X PATCH http://localhost:3000/posts/POST_ID \
 
 ### 7. Delete Post (Protected, Owner Only)
 ```bash
-curl -X DELETE http://localhost:3000/posts/POST_ID \
+curl -X DELETE http://localhost:3000/api/posts/POST_ID \
   -H "Authorization: Bearer YOUR_TOKEN_HERE"
 ```
 
@@ -118,27 +118,27 @@ curl -X DELETE http://localhost:3000/posts/POST_ID \
 ### Valid Token Test
 ```bash
 # Should return 200 OK
-curl -X GET http://localhost:3000/users \
+curl -X GET http://localhost:3000/api/users \
   -H "Authorization: Bearer VALID_TOKEN"
 ```
 
 ### Invalid Token Test
 ```bash
 # Should return 401 Unauthorized
-curl -X GET http://localhost:3000/users \
+curl -X GET http://localhost:3000/api/users \
   -H "Authorization: Bearer invalid_token"
 ```
 
 ### Missing Token Test
 ```bash
 # Should return 401 Unauthorized
-curl -X GET http://localhost:3000/users
+curl -X GET http://localhost:3000/api/users
 ```
 
 ### Expired Token Test
 ```bash
 # Should return 401 Unauthorized (after token expires)
-curl -X GET http://localhost:3000/users \
+curl -X GET http://localhost:3000/api/users \
   -H "Authorization: Bearer EXPIRED_TOKEN"
 ```
 
@@ -204,10 +204,10 @@ curl -X GET http://localhost:3000/users \
 ```bash
 # Test login endpoint
 ab -n 100 -c 10 -p login.json -T application/json \
-  http://localhost:3000/auth/login
+  http://localhost:3000/api/auth/login
 
 # Test get posts endpoint
-ab -n 1000 -c 50 http://localhost:3000/posts
+ab -n 1000 -c 50 http://localhost:3000/api/posts
 ```
 
 ### Load Testing with Artillery
@@ -215,7 +215,7 @@ ab -n 1000 -c 50 http://localhost:3000/posts
 npm install -g artillery
 
 # Run load test
-artillery quick --count 10 --num 50 http://localhost:3000/posts
+artillery quick --count 10 --num 50 http://localhost:3000/api/posts
 ```
 
 ## Additional Resources

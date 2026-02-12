@@ -222,7 +222,7 @@ npm run build
 npm run start:prod
 ```
 
-The API will be available at `http://localhost:3000`
+The API will be available at `http://localhost:3000/api`
 
 ## Migrations (TypeORM)
 
@@ -260,12 +260,12 @@ The E2E tests cover:
 
 ### Base URL
 ```
-http://localhost:3000
+http://localhost:3000/api
 ```
 
 ### Hosted Swagger UI (Render)
 ```
-https://simple-rest-api-5nd2.onrender.com/docs
+https://simple-rest-api-5nd2.onrender.com/api/docs
 ```
 
 ### Authentication Endpoints
