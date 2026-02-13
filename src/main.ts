@@ -31,7 +31,6 @@ async function bootstrap() {
       .setDescription("API documentation for Users, Auth, and Posts")
       .setVersion("1.0.0")
       .addBearerAuth()
-      .addServer(`/${globalPrefix}`)
       .build();
     const document = SwaggerModule.createDocument(app, config, {
       ignoreGlobalPrefix: false,

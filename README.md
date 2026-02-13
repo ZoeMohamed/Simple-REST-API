@@ -3,6 +3,7 @@
 A comprehensive REST API built with NestJS, TypeScript, PostgreSQL, and JWT Authentication featuring CRUD operations for Users and Posts with a modular architecture.
 
 ## Architecture Pattern: Modular Monolith with Repository Pattern
+This section describes the overall architectural style and why it fits this project.
 
 ### Why This Pattern?
 
@@ -34,6 +35,7 @@ I use a **Modular Monolith Architecture** with a **Repository Pattern** for thes
 ```
 
 ## General Flow (Request & Auth)
+This section summarizes how requests and authentication move through the system.
 
 Request flow:
 ```
@@ -47,6 +49,7 @@ Authentication flow:
 4. Controller uses `request.user` for protected actions.
 
 ## Architecture Diagram
+This diagram visualizes the main layers and module relationships.
 
 ```mermaid
 flowchart LR
@@ -125,6 +128,7 @@ src/
 ```
 
 ## Features
+This section highlights the key capabilities included in the API.
 
 - **JWT Authentication** - Secure authentication using JSON Web Tokens
 - **CRUD Operations** - Complete CRUD for Users and Posts
@@ -137,6 +141,7 @@ src/
 - **Relations** - One-to-many relationship between Users and Posts
 
 ## Database Schema
+This section documents the main tables and relationships used by the API.
 
 ### Users Table
 ```sql
@@ -164,6 +169,7 @@ src/
 - Post **belongsTo** User (Many-to-One)
 
 ## Getting Started
+This section provides the steps to install, configure, and run the project locally.
 
 ### Prerequisites
 - Node.js (v18 or higher)
@@ -238,6 +244,7 @@ npm run start:prod
 The API will be available at `http://localhost:3000/api`
 
 ## Migrations (TypeORM)
+This section explains how to generate, run, and revert database migrations.
 
 Generate a migration based on entity changes:
 ```bash
@@ -255,6 +262,7 @@ npm run migration:revert
 ```
 
 ## Testing
+This section shows how to run the automated tests and what they cover.
 
 ### Run E2E Tests
 ```bash
@@ -270,6 +278,7 @@ The E2E tests cover:
 - Invalid token handling
 
 ## API Documentation
+This section lists the base URLs and example requests for each endpoint.
 
 ### Base URL
 ```
@@ -496,6 +505,7 @@ Response: 200 OK
 ```
 
 ## Security Features
+This section summarizes the security controls applied in the API.
 
 1. **Password Hashing**: All passwords are hashed using bcrypt before storage
 2. **JWT Authentication**: Stateless authentication using JSON Web Tokens
@@ -505,6 +515,7 @@ Response: 200 OK
 6. **SQL Injection Protection**: TypeORM provides parameterized queries
 
 ## Technology Stack
+This section lists the primary frameworks and libraries used.
 
 - **Framework**: NestJS 10
 - **Language**: TypeScript 5
@@ -516,6 +527,7 @@ Response: 200 OK
 - **Password Hashing**: bcrypt
 
 ## Project Structure Benefits
+This section explains why the current structure improves maintainability and scaling.
 
 1. **Modularity**: Each feature is in its own module
 2. **Reusability**: Common functionality in shared modules
@@ -525,6 +537,7 @@ Response: 200 OK
 6. **Clean Code**: Following SOLID principles and best practices
 
 ## Development Workflow
+This section outlines a recommended step-by-step workflow for adding features.
 
 1. **Create Module**: Generate new module using NestJS CLI
 2. **Define Entity**: Create database model with TypeORM
@@ -535,6 +548,7 @@ Response: 200 OK
 7. **Document API**: Update API documentation
 
 ## Environment Variables
+This section documents the required environment configuration for the app.
 
 | Variable | Description | Default |
 |----------|-------------|---------|
@@ -549,6 +563,7 @@ Response: 200 OK
 | NODE_ENV | Environment | development |
 
 ## Contributing
+This section explains how to contribute changes to the project.
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/amazing-feature`)
@@ -557,10 +572,12 @@ Response: 200 OK
 5. Open a Pull Request
 
 ## Author
+This section credits the project author.
 
 Zoe
 
 ## Acknowledgments
+This section lists the main references used to build the project.
 
 - NestJS Documentation
 - TypeORM Documentation
